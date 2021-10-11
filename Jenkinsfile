@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        NAME_CONTAINER = "pcks-roadway-shippingsheduling-core"
-        NAME_IMAGE = "pcks-roadway-shippingsheduling-img:1"
+        NAME_CONTAINER = "pcks-logistic-scheduling-core"
+        NAME_IMAGE = "pcks-logistic-scheduling-img:1"
         ID_CONTAINER = null
         PORT_CONTAINER = "9179:9179"
     }
@@ -13,7 +13,7 @@ pipeline {
         stage('Git Checkout Repositorio') {
             steps {
                 git branch: 'develop',
-                url: 'https://github.com/packsendme/pcks-roadway-shippingsheduling-core.git'
+                url: 'https://github.com/packsendme/pcks-logistic-scheduling-core.git'
             }
         }
         stage('Java Build') {

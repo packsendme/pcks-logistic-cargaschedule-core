@@ -1,4 +1,4 @@
-package com.packsendme.roadway.shippingsheduling.dao;
+package com.packsendme.logistic.sheduling.dao;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.packsendme.logistic.sheduling.config.Redis_Config;
 import com.packsendme.roadbrewa.entity.Roadway;
-import com.packsendme.roadway.shippingsheduling.config.Redis_Config;
 
 @Repository
 @Transactional

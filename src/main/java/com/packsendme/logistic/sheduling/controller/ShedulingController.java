@@ -1,4 +1,4 @@
-package com.packsendme.roadway.shippingsheduling.controller;
+package com.packsendme.logistic.sheduling.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -20,12 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.packsendme.lib.roadway.simulation.request.SimulationRoadwayRequest;
 import com.packsendme.lib.roadway.simulation.response.SimulationRoadwayResponse;
-import com.packsendme.roadway.shippingsheduling.service.Shippingsheduling_Service;
+import com.packsendme.logistic.sheduling.service.Shippingsheduling_Service;
 
 
 @RestController
-@RequestMapping("/roadway")
-public class ShippingshedulingController {
+@RequestMapping("/logistic/sheduling")
+public class ShedulingController {
 
 	@Autowired
 	private Shippingsheduling_Service roadwayService;

@@ -1,4 +1,4 @@
-package com.packsendme.roadway.shippingsheduling.service;
+package com.packsendme.logistic.sheduling.service;
 
 import java.util.List;
 import java.util.Map;
@@ -15,9 +15,9 @@ import com.packsendme.lib.roadway.simulation.request.SimulationRoadwayRequest;
 import com.packsendme.lib.roadway.simulation.request.SimulationRoadwayRequest_Dto;
 import com.packsendme.lib.roadway.simulation.response.SimulationRoadwayResponse;
 import com.packsendme.lib.roadwaycalculate.rulesinstance.InstanceRuleCosts;
-import com.packsendme.roadway.shippingsheduling.component.LoadDataFacadeImpl;
-import com.packsendme.roadway.shippingsheduling.dao.SimulationDBImpl_Dao;
-import com.packsendme.roadway.shippingsheduling.dto.ShippingshedulingResponse_Dto;
+import com.packsendme.logistic.sheduling.component.LoadDataFacadeImpl;
+import com.packsendme.logistic.sheduling.dao.SimulationDBImpl_Dao;
+import com.packsendme.logistic.sheduling.dto.ShippingshedulingResponse_Dto;
 
 @Service
 @ComponentScan("com.packsendme.roadway.simulation.component")

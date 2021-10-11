@@ -1,4 +1,4 @@
-package com.packsendme.roadway.shippingsheduling.repository;
+package com.packsendme.logistic.sheduling.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

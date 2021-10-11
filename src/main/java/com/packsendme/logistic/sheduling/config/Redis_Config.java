@@ -1,4 +1,4 @@
-package com.packsendme.roadway.shippingsheduling.config;
+package com.packsendme.logistic.sheduling.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

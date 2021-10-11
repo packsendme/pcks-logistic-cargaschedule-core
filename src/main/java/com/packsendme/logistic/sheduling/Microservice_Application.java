@@ -1,4 +1,4 @@
-package com.packsendme.roadway.shippingsheduling;
+package com.packsendme.logistic.sheduling;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

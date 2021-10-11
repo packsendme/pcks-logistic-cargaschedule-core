@@ -1,4 +1,4 @@
-package com.packsendme.roadway.shippingsheduling.dto;
+package com.packsendme.logistic.sheduling.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;

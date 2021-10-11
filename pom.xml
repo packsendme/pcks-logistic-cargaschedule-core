@@ -3,11 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.packsendme.microservice.roadway</groupId>
-	<artifactId>pcks-roadway-shippingsheduling-core</artifactId>
+	<groupId>com.packsendme.logistic.microservice</groupId>
+	<artifactId>pcks-logistic-scheduling-core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>pcks-roadway-shippingsheduling-core</name>
+	<name>pcks-logistic-scheduling-core</name>
 
 
 	<parent>
@@ -70,12 +70,7 @@
 			<version>2.0.10.RELEASE</version>
 		</dependency>
 		-->
-		<dependency>
-			<groupId>com.packsendme.lib.roadway</groupId>
-			<artifactId>pcks-roadbrewa-roadway-lib</artifactId>
-  			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
+		
 		<dependency>
       		<groupId>org.springframework.boot</groupId>
       		<artifactId>spring-boot-starter-web</artifactId>
@@ -92,28 +87,10 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>com.packsendme.lib.common</groupId>
-			<artifactId>pcks-common-lib</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-		</dependency>
-
-
-		<dependency>
-			<groupId>com.packsendme.lib.roadway</groupId>
-  			<artifactId>pcks-roadway-simulation-lib</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.packsendme.lib.roadway</groupId>
-  			<artifactId>pcks-roadway-calculate-lib</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 

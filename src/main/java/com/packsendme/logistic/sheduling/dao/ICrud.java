@@ -1,4 +1,4 @@
-package com.packsendme.roadway.shippingsheduling.dao;
+package com.packsendme.logistic.sheduling.dao;
 
 import java.util.List;
 
