@@ -1,4 +1,4 @@
-package com.packsendme.logistic.sheduling.component;
+package com.packsendme.logistic.cargashedule.component;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

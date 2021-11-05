@@ -1,4 +1,4 @@
-package com.packsendme.logistic.sheduling.dao;
+package com.packsendme.logistic.cargashedule.dao;
 
 import java.util.List;
 

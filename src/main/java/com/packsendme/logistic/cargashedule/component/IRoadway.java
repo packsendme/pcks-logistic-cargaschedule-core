@@ -1,4 +1,4 @@
-package com.packsendme.logistic.sheduling.component;
+package com.packsendme.logistic.cargashedule.component;
 
 import java.util.Map;
 

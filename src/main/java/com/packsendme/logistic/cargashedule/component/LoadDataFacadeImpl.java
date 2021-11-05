@@ -1,4 +1,4 @@
-package com.packsendme.logistic.sheduling.component;
+package com.packsendme.logistic.cargashedule.component;
 
 import java.util.Map;
 
@@ -13,9 +13,9 @@ import com.packsendme.lib.common.exchange.Exchange;
 import com.packsendme.lib.common.response.dto.api.GoogleAPITrackingResponse_Dto;
 import com.packsendme.lib.roadway.simulation.request.SimulationRoadwayRequest;
 import com.packsendme.lib.roadway.simulation.request.SimulationRoadwayRequest_Dto;
-import com.packsendme.logistic.sheduling.controller.IExchangeRate_Client;
-import com.packsendme.logistic.sheduling.controller.IGoogleAPI_Client;
-import com.packsendme.logistic.sheduling.dao.RoadwayCacheImpl_Dao;
+import com.packsendme.logistic.cargashedule.controller.IExchangeRate_Client;
+import com.packsendme.logistic.cargashedule.controller.IGoogleAPI_Client;
+import com.packsendme.logistic.cargashedule.dao.RoadwayCacheImpl_Dao;
 import com.packsendme.roadbrewa.entity.Roadway;
 
 @Component

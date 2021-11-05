@@ -1,4 +1,4 @@
-package com.packsendme.logistic.sheduling.controller;
+package com.packsendme.logistic.cargashedule.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,46 +18,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.packsendme.lib.roadway.simulation.request.SimulationRoadwayRequest;
-import com.packsendme.lib.roadway.simulation.response.SimulationRoadwayResponse;
-import com.packsendme.logistic.sheduling.service.Shippingsheduling_Service;
+import com.packsendme.cross.common.dto.logistic.LogisticManifest_Dto;
+import com.packsendme.logistic.cargashedule.service.CargaSchedule_Service;
 
 
 @RestController
-@RequestMapping("/logistic/sheduling")
-public class ShedulingController {
+@RequestMapping("/logistic/cargasheduling")
+public class CargaScheduleController {
 
 	@Autowired
-	private Shippingsheduling_Service roadwayService;
+	private CargaSchedule_Service cargaScheduleService;
 
 	private Map<String, String> header = new HashMap<String, String>();
 	
-	//			@ModelAttribute
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@PostMapping("/simulation/transport")
-	public ResponseEntity<?> getSimulation(
-			@RequestHeader("isoLanguageCode") String isoLanguageCode, 
-			@RequestHeader("isoCountryCode") String isoCountryCode,
-			@RequestHeader("isoCurrencyCode") String isoCurrencyCode,
-			@RequestHeader("originApp") String originApp,
-			@Validated @RequestBody  SimulationRoadwayRequest simulationObj)
-		throws JsonProcessingException, IOException 
-	{	
-		header.put("isoLanguageCode", isoLanguageCode);
-		header.put("isoCountryCode", isoCountryCode);
-		header.put("isoCurrencyCode", isoCurrencyCode);
-		header.put("originApp", originApp);
-		return roadwayService.getSimulationTransport(simulationObj,header);
-	}
+	
+	// ========= LOGISTIC MANIFEST  =========================================// 
+    
+	// STATUS: LOGISTIC NO SHARE
 	
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@PostMapping("/simulation")
-	public ResponseEntity<?> postSimulation(
+	@PostMapping("/logisticmanifest")
+	public ResponseEntity<?> postLogisticManifest(
 			@RequestHeader("isoLanguageCode") String isoLanguageCode, 
 			@RequestHeader("isoCountryCode") String isoCountryCode,
 			@RequestHeader("isoCurrencyCode") String isoCurrencyCode,
 			@RequestHeader("originApp") String originApp,
-			@Validated @RequestBody  SimulationRoadwayResponse simulationObj)
+			@Validated @RequestBody LogisticManifest_Dto logisticManifest)
 		throws JsonProcessingException, IOException 
 	{	
 		header.put("isoLanguageCode", isoLanguageCode);
@@ -65,17 +51,23 @@ public class ShedulingController {
 		header.put("isoCurrencyCode", isoCurrencyCode);
 		header.put("originApp", originApp);
 		
-		return roadwayService.postSimulationResponse(simulationObj);
+		return cargaScheduleService.createLogisticManifest(logisticManifest,header);
 	}
 	
+	
+//========= AVAILABLE MANIFEST =========================================// 
+	
+	// STATUS: LOGISTIC SHARE
+	
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@DeleteMapping("/simulation")
-	public ResponseEntity<?> deleteSimulation(
+	@PostMapping("/availablemanifest/{idAvailableManifest}")
+	public ResponseEntity<?> postAvailableManifest(
 			@RequestHeader("isoLanguageCode") String isoLanguageCode, 
 			@RequestHeader("isoCountryCode") String isoCountryCode,
 			@RequestHeader("isoCurrencyCode") String isoCurrencyCode,
 			@RequestHeader("originApp") String originApp,
-			@Validated @RequestParam("id") String id)
+			@RequestParam("idAvailableManifest") String idAvailableManifest,
+			@Validated @RequestBody LogisticManifest_Dto logisticManifest)
 		throws JsonProcessingException, IOException 
 	{	
 		header.put("isoLanguageCode", isoLanguageCode);
@@ -83,25 +75,39 @@ public class ShedulingController {
 		header.put("isoCurrencyCode", isoCurrencyCode);
 		header.put("originApp", originApp);
 		
-		return roadwayService.deleteSimulation(id);
-	}
-	
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@GetMapping("/simulation")
-	public ResponseEntity<?> getSimulationAll(
-			@RequestHeader("isoLanguageCode") String isoLanguageCode, 
-			@RequestHeader("isoCountryCode") String isoCountryCode,
-			@RequestHeader("isoCurrencyCode") String isoCurrencyCode,
-			@RequestHeader("originApp") String originApp)
-		throws JsonProcessingException, IOException 
-	{	
-		header.put("isoLanguageCode", isoLanguageCode);
-		header.put("isoCountryCode", isoCountryCode);
-		header.put("isoCurrencyCode", isoCurrencyCode);
-		header.put("originApp", originApp);
-		
-		return roadwayService.getSimulation();
+		return roadwayService.postAvailableManifest(logisticManifest);
 	}
 
+	
+	
+	
+	// METHOD INSTANCE FOR SIMULATION_MICROSERVICES
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GetMapping("/availablemanifest/{city_origin}/{city_destination}/{weight_cargo}/"
+			+ "{unityWeight}/{height_cargo}/{width_cargo}/{length_cargo}")
+	public ResponseEntity<?> getAvailableManifest(
+			@RequestHeader("isoLanguageCode") String isoLanguageCode, 
+			@RequestHeader("isoCountryCode") String isoCountryCode,
+			@RequestHeader("isoCurrencyCode") String isoCurrencyCode,
+			@RequestHeader("originApp") String originApp,
+			@RequestParam("city_origin") String city_origin,
+			@RequestParam("city_destination") String city_destination,
+			@RequestParam("weight_cargo") double weight_cargo,
+			@RequestParam("unityWeight") String weight_unity,
+			@RequestParam("height_cargo") String height_cargo,
+			@RequestParam("width_cargo") String width_cargo,
+			@RequestParam("length_cargo") String length_cargo)
+		throws JsonProcessingException, IOException 
+	{	
+		header.put("isoLanguageCode", isoLanguageCode);
+		header.put("isoCountryCode", isoCountryCode);
+		header.put("isoCurrencyCode", isoCurrencyCode);
+		header.put("originApp", originApp);
+		
+		return roadwayService.getAvailableManifest(logisticManifest);
+	}
+	
+		
+	
 
 }

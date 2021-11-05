@@ -1,4 +1,4 @@
-package com.packsendme.logistic.sheduling.service;
+package com.packsendme.logistic.cargashedule.service;
 
 import java.util.List;
 import java.util.Map;
@@ -9,19 +9,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.packsendme.lib.common.constants.generic.HttpExceptionPackSend;
-import com.packsendme.lib.common.response.Response;
-import com.packsendme.lib.roadway.simulation.request.SimulationRoadwayRequest;
-import com.packsendme.lib.roadway.simulation.request.SimulationRoadwayRequest_Dto;
-import com.packsendme.lib.roadway.simulation.response.SimulationRoadwayResponse;
-import com.packsendme.lib.roadwaycalculate.rulesinstance.InstanceRuleCosts;
-import com.packsendme.logistic.sheduling.component.LoadDataFacadeImpl;
-import com.packsendme.logistic.sheduling.dao.SimulationDBImpl_Dao;
-import com.packsendme.logistic.sheduling.dto.ShippingshedulingResponse_Dto;
+import com.packsendme.cross.common.constants.generic.HttpExceptionPackSend;
+import com.packsendme.cross.common.dto.logistic.LogisticManifest_Dto;
+import com.packsendme.cross.common.response.Response;
+import com.packsendme.logistic.cargashedule.component.LoadDataFacadeImpl;
+import com.packsendme.logistic.cargashedule.dao.SimulationDBImpl_Dao;
 
 @Service
 @ComponentScan("com.packsendme.roadway.simulation.component")
-public class Shippingsheduling_Service {
+public class CargaSchedule_Service {
 	
 	@Autowired(required=true)
 	private LoadDataFacadeImpl roadwayLoadData;
@@ -30,23 +26,17 @@ public class Shippingsheduling_Service {
 	private SimulationDBImpl_Dao simulationDAO;
 
 	
-	public ResponseEntity<?> getSimulationTransport(SimulationRoadwayRequest simulationDataObj, Map header) {
-		Response<SimulationRoadwayResponse> responseObj = null;
+	public ResponseEntity<?> createLogisticManifest(LogisticManifest_Dto logisticManifest, Map header) {
+		Response<LogisticManifest_Dto> responseObj = null;
 		try {
-			// Load Data From API or Cache
-			SimulationRoadwayRequest_Dto simulationDataDto_Obj = roadwayLoadData.getData(simulationDataObj, header);
-			InstanceRuleCosts instanceRulesObj = new  InstanceRuleCosts();
 			
-			// Instance JAR - Costs Calculate 
-			SimulationRoadwayResponse simulationRoadwayResp = instanceRulesObj.instanceRulesCosts(simulationDataDto_Obj);
-			
-			responseObj = new Response<SimulationRoadwayResponse>(0,HttpExceptionPackSend.SIMULATION_ROADWAY.getAction(), simulationRoadwayResp);
+			responseObj = new Response<LogisticManifest_Dto>(0,HttpExceptionPackSend.CREATED.getAction(), logisticManifest);
 			return new ResponseEntity<>(responseObj, HttpStatus.OK);
 		}
 		catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e);
-			responseObj = new Response<SimulationRoadwayResponse>(0,HttpExceptionPackSend.SIMULATION_ROADWAY.getAction(), null);
+			responseObj = new Response<LogisticManifest_Dto>(0,HttpExceptionPackSend.FAIL_EXECUTION.getAction(), null);
 			return new ResponseEntity<>(responseObj, HttpStatus.BAD_REQUEST);
 		}
 	}

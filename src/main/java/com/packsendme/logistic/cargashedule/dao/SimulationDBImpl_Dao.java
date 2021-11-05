@@ -1,4 +1,4 @@
-package com.packsendme.logistic.sheduling.dao;
+package com.packsendme.logistic.cargashedule.dao;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mongodb.MongoClientException;
 import com.packsendme.lib.roadway.simulation.response.SimulationRoadwayResponse;
-import com.packsendme.logistic.sheduling.repository.IShippingsheduling_Repository;
+import com.packsendme.logistic.cargashedule.repository.IShippingsheduling_Repository;
 
 @Repository
 @Transactional
